@@ -1,1 +1,5 @@
 #macro DEPTH_SYSTEM -10000
+#macro LEVEL_SIZE 10
+#macro ACT_SIZE 20
+
+#macro CEll_WIDTH 16

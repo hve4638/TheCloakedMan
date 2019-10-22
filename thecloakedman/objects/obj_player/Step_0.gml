@@ -1,30 +1,35 @@
+if isblock(x + 10, y) && onground
+	stop = true;
+else if !isblock(x + 10, y)
+	stop = false;
+
 if run
 {
 	var spd;
-
-	if onground
+	
+	if !stop
 	{
-		if !isblock(x + 10, y)
+		if onground
 			spd = walkspd;
 		else
-			spd = 0;
+			spd = walkspd_jump;
 	}
 	else
-		spd = walkspd_jump;
-	
-	if abs(hspd - spd) < 0.2
-		hspd = spd;
-	else
-		hspd += sign(spd - hspd) * 0.2;
+	{
+		if onground
+			spd = 0;
+		else
+			spd = 0.5;
+	}
+		
+
+	hspd = approach(hspd,spd,0.2);
 }
 else
 {
 	if onground
 	{
-		if abs(hspd) < 0.1
-			hspd = 0;
-		else
-			hspd += - sign(hspd) * 0.1;
+		hspd = approach(hspd,0,0.1);
 	}
 }
 
@@ -53,50 +58,20 @@ else
 
 if isblock(x + hspd, y + vspd)
 {	
-	var h, v;
+	if isblock(x, y + vspd)
+	{
+		while(!isblock(x, y + sign(vspd)))
+			y += sign(vspd);
+		
+		vspd = 0;
+	}
 
 	if isblock(x + hspd,y)
 	{
-		if hspd > 0
-		{
-			for(h = 1; h <= abs(hspd); h++)
-				if isblock(x + h, y)
-					break;
-	
-			x += h-1;
-		}
-		else if hspd < 0
-		{
-			for(h = 1; h <= abs(hspd); h++)
-				if isblock(x - h, y)
-					break;
-	
-			x -= h-1;
-		}
-		
+		while(!isblock(x + sign(hspd),y))
+			x += sign(hspd);
+
 		hspd = 0;
-	}
-	
-	if isblock(x, y + vspd)
-	{
-		if vspd > 0
-		{
-			for(v = 1; v <= abs(vspd); v++)
-				if isblock(x, y + v)
-					break;
-	
-			y += v-1;
-		}
-		else if vspd < 0
-		{
-			for(v = 1; v <= abs(vspd); v++)
-				if isblock(x, y - v)
-					break;
-	
-			y -= v-1;
-		}
-		
-		vspd = 0;
 	}
 }
 x += hspd;

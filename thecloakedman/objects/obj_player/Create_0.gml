@@ -1,4 +1,5 @@
 run = false;
+stop = false;
 
 grav = 0.3;
 hspd = 0;
@@ -6,9 +7,9 @@ vspd = 0;
 jumph = -5;
 
 walkspd = 1.5;
-walkspd_jump = 1.2;
-maxvspd = 6;
-maxvspd_cloak = 0.7;
+walkspd_jump = 1.3;
+maxvspd = 4;
+maxvspd_cloak = 0.75;
 
 onground = false;
 oncloak = false;

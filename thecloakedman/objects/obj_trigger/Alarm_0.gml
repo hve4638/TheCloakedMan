@@ -1,0 +1,1 @@
+room_goto_stage_next();

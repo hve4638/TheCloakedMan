@@ -1,6 +1,8 @@
 ///@desc New Event
-/*
-draw_set_color(c_black);
-draw_text(0,0,string(hspd) + "\n" + string(vspd));
-draw_text(0,48,s("onground : ",onground, "\nonCloack : ",oncloak));
-draw_text(0,64+24,s("b:\n",button_press(),"\n",button_hold(),"\n",button_release()));
+draw_set_color(c_gray);
+draw_set_halign(fa_right);
+draw_text(global.win_w,0,"speed : " + string(hspd) + ", " + string(vspd));
+draw_text(global.win_w,0,s("\nonground : ",onground, "\nonCloack : ",oncloak,"\nstop: ",stop));
+
+
+draw_set_halign(fa_left);

@@ -27,8 +27,6 @@ if button_press()
 }
 
 if run
-{
-	oncloak = button_hold();	
-}
+	oncloak = button_hold();
 else
 	oncloak = false;

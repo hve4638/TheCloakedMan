@@ -7,7 +7,7 @@ if spridx != spridx_p
 			sprite_index = spridx;
 		} break;
 	}
-	
+
 	image_index = 0;
 	image_speed = 1;
 	spridx_p = spridx;

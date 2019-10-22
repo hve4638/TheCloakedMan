@@ -3,16 +3,14 @@ var lvl, act;
 lvl = room_get_level(room);
 act = room_get_act(room);
 
-while(act + 1 > act_size(lvl))
-{
-	if lvl + 1 > level_size()
-		return -1;
-	
-	lvl++;
-	act = 0;
-}
-act++;
+if stage_eow(lvl,act)
+	return -1;
 
-log("goto ",lvl,"-",act," ?");
+if stage_eol(lvl,act)
+{
+	lvl++;
+	act = 1;
+}
+
 room_goto_stage(lvl, act);
 return 0;

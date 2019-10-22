@@ -1,6 +1,6 @@
-if isblock(x + 10, y) && onground
+if isblock(x + 11, y) && onground
 	stop = true;
-else if !isblock(x + 10, y)
+else if !isblock(x + 11, y)
 	stop = false;
 
 if run
@@ -19,7 +19,7 @@ if run
 		if onground
 			spd = 0;
 		else
-			spd = 0.5;
+			spd = 0.4;
 	}
 		
 
@@ -77,10 +77,29 @@ if isblock(x + hspd, y + vspd)
 x += hspd;
 y += vspd;
 
-onground = isblock(x,y + 1);
+
+
+if isblock(x,y + 1)
+{
+	onground = true;
+	jumpbuffer = 2;
+}
+else if onground && !isblock(x,y + 1)
+{
+	if jumpbuffer < 0
+		onground = false;
+	else
+		jumpbuffer--;
+}
+
 
 if room_width < bbox_left
 {
-	x -= room_width + sprite_width;
-	xprevious -= room_width + sprite_width;
+	x -= room_width;// + sprite_width;
+	xprevious -= room_width;// + sprite_width;
+}
+
+if room_height < bbox_top
+{
+	kill();
 }

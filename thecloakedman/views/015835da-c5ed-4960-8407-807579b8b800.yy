@@ -9,7 +9,9 @@
         "f50fe6ac-a04f-48c1-9f37-f6e9fc11cfd3",
         "f8810dec-73f4-4e78-80dc-c20241bfa798",
         "5ea01259-142e-4586-88f2-ea021ea23c49",
-        "b8cd37b0-49a5-4100-9251-98d232388a10"
+        "b8cd37b0-49a5-4100-9251-98d232388a10",
+        "78c8baf8-8948-42c0-8745-b1b34c8f08ba",
+        "9494c49f-134b-499f-8b82-fd4a2f9d8919"
     ],
     "filterType": "GMScript",
     "folderName": "get",

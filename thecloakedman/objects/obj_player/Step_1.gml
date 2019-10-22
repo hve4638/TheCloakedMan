@@ -1,12 +1,10 @@
 if keyboard_check_pressed(vk_backspace)
-{
-	game_restart();
-}
+	room_goto(rm_select);
 
 if keyboard_check_pressed(ord("R"))
 	run = !run;
 
-if button_press()
+if button_press() && !freeze
 {
 	if !run
 	{
@@ -26,7 +24,7 @@ if button_press()
 	}
 }
 
-if run
+if run && !freeze
 	oncloak = button_hold();
 else
 	oncloak = false;

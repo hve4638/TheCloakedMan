@@ -11,3 +11,5 @@ log("goto ",lv,"-",act);
 
 if room_exists(rm)
 	room_goto(rm);
+else
+	room_goto(rm_select);

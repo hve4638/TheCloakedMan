@@ -57,49 +57,65 @@ else
 }
 
 if isblock(x + hspd, y + vspd)
-{	
-	if isblock(x, y + vspd)
+{
+	if isblock(x, y + vspd) && vspd != 0
 	{
-		while(!isblock(x, y + sign(vspd)))
-			y += sign(vspd);
-		
+		var b, t;
+		b = blockid(x, y + vspd);
+		t = y + vspd;
+
+		if b != noone
+		{
+			if vspd < 0
+				t = b.bbox_bottom + b_t;
+			else if vspd > 0
+				t = b.bbox_top - b_b;
+		}
+
+
+		if !isblock(x, t)
+			y = t;
+		else
+		{
+			while(!isblock(x, y + sign(vspd)))
+				y += sign(vspd);
+			
+			if isblock(x ,y)
+				y -= sign(vspd);
+		}
+
 		vspd = 0;
 	}
 
-	if isblock(x + hspd,y)
+	if isblock(x + hspd,y) && hspd != 0
 	{
-		while(!isblock(x + sign(hspd),y))
-			x += sign(hspd);
+		var b, t;
+		b = blockid(x + hspd, y);
+		t = x + hspd;
+
+		if b != noone
+		{
+			if hspd < 0
+				t = b.bbox_right + b_l;
+			else if hspd > 0
+				t = b.bbox_left - b_r;
+		}
+
+
+		if !isblock(t, y)
+			x = t;
+		else
+		{
+			while(!isblock(x + sign(hspd),y))
+				x = modulo(x + sign(hspd), room_width);
+
+			if isblock(x ,y)
+				x = modulo(x - sign(hspd), room_width);
+		}
 
 		hspd = 0;
 	}
 }
+
 x += hspd;
 y += vspd;
-
-
-
-if isblock(x,y + 1)
-{
-	onground = true;
-	jumpbuffer = 2;
-}
-else if onground && !isblock(x,y + 1)
-{
-	if jumpbuffer < 0
-		onground = false;
-	else
-		jumpbuffer--;
-}
-
-
-if room_width < bbox_left
-{
-	x -= room_width;// + sprite_width;
-	xprevious -= room_width;// + sprite_width;
-}
-
-if room_height < bbox_top
-{
-	kill();
-}

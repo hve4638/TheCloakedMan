@@ -2,8 +2,12 @@
 /*
 draw_set_color(c_gray);
 draw_set_halign(fa_right);
-draw_text(global.win_w,0,"speed : " + string(hspd) + ", " + string(vspd));
-draw_text(global.win_w,0,s("\nonground : ",onground, "\nonCloack : ",oncloak,"\nstop: ",stop));
+var str = "";
+str += s("speed : ",string(hspd),", ",string(vspd),"\n");
+str += s("onground : ",onground, "\nonCloack : ",oncloak,"\nstop: ",stop,"\n");
+str += s("inblock : ", isblock(x,y),"\n")
+str += s("lastjump(",jx,", ",jy,", ",jh);
+draw_text(global.win_w,0,str);
 
 
 draw_set_halign(fa_left);

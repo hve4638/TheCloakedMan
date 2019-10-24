@@ -1,2 +1,1 @@
-///@desc New Event
 kill();

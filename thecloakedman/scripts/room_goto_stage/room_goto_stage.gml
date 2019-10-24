@@ -10,6 +10,10 @@ rm = global.stage[# act, lv];
 log("goto ",lv,"-",act);
 
 if room_exists(rm)
+{
 	room_goto(rm);
-else
-	room_goto(rm_select);
+
+	return 1;
+}
+
+return 0;

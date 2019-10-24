@@ -18,7 +18,6 @@ for(i = 0; i < grid_h; i++)
 	lvl = fgrid[# 0, i];
 	act = fgrid[# 1, i];
 	idx = asset_get_index(fgrid[# 2, i]);
-	//log(fgrid[# 2, i],": ",idx);
 
 	global.stage[# act, lvl] = idx;
 	global.stage[# 0, lvl]++;

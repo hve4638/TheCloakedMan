@@ -1,7 +1,17 @@
-if os_type == os_windows
-	return keyboard_check_pressed(vk_space);
+if keyboard_check_pressed(vk_anykey)
+{
+	global.keytype = e_input.keyboard;
+	global.key = keyboard_lastkey;
+	
+	return true;
+}
 
-if os_type == os_android
-	return device_mouse_check_button_pressed(0,mb_left);
+if device_mouse_check_button_pressed(0,mb_left)
+{
+	global.keytype = e_input.mouse;
+	global.key = 0;
+	
+	return true;
+}
 
 return false;

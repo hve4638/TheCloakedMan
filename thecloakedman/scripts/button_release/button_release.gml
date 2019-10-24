@@ -1,8 +1,17 @@
-if os_type == os_windows
-	return keyboard_check_released(vk_space);
+var res = false;
 
+switch(global.keytype)
+{
+	case e_input.keyboard:
+	{
+		res = keyboard_check_released(vk_anykey);
+	} break;
+	
+	
+	case e_input.mouse:
+	{
+		res = device_mouse_check_button_released(0,mb_left);
+	} break;
+}
 
-if os_type == os_android
-	return device_mouse_check_button_released(0,mb_left);
-
-return false;
+return res;

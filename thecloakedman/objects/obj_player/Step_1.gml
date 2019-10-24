@@ -1,9 +1,3 @@
-if keyboard_check_pressed(vk_backspace)
-	room_goto(rm_select);
-
-if keyboard_check_pressed(ord("R"))
-	run = !run;
-
 if button_press() && !freeze
 {
 	if !run
@@ -12,7 +6,7 @@ if button_press() && !freeze
 	}
 	else
 	{
-		if onground
+		if onground && nojumpbuffer == 0
 		{
 			vspd = jumph;
 			onground = false;

@@ -13,10 +13,10 @@ w = ds_grid_width(grid);
 h = ds_grid_height(grid);
 
 var l, r, u, d;
-l = grid[# modulo(cx-1,w), modulo(cy,h)];
-r = grid[# modulo(cx+1,w), modulo(cy,h)];
-u = grid[# modulo(cx,w), modulo(cy-1,h)];
-d = grid[# modulo(cx,w), modulo(cy+1,h)];
+l = grid[# modulo(cx-1,w), cy];
+r = grid[# modulo(cx+1,w), cy];
+u = 0 <= cy-1 ? grid[# modulo(cx,w), cy-1] != 0 : 1;
+d = cy+1 < h ? grid[# modulo(cx,w), cy+1] != 0 : 1;
 
 
 if u && d //dirt

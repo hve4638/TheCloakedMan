@@ -35,7 +35,7 @@ with(sys_global)
 
 save();
 
-if stage_exists(lvl,act)
+if stage_exists(lvl,act) && (lvl != 0 && act != 0)
 	rm = get_stage(lvl,act);
 else
 	rm = rm_select;

@@ -1,3 +1,34 @@
+if isblock(x,y + 1)
+{
+	onground = true;
+	jumpbuffer = 2;
+}
+else if onground && !isblock(x,y + 1)
+{
+	if jumpbuffer <= 0
+		onground = false;
+	else
+		jumpbuffer--;
+}
+
+if !onground
+	nojumpbuffer = 3;
+
+nojumpbuffer = max(0, nojumpbuffer - 1);
+cloakedbuffer = max(0, cloakedbuffer - 1);
+
+
+
+if room_width < bbox_left
+{
+	x -= room_width;
+	xprevious -= room_width;
+}
+
+if room_height < bbox_top
+	kill();
+
+
 if spridx != spridx_p
 {
 	switch(spridx)
